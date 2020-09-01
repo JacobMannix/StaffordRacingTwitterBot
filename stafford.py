@@ -141,7 +141,7 @@ def staffordResults(archiveURL):
         discordMessage(webhook_url, message_content)
 
     else:
-        # print('no race')
+        print('no race')
         # discordMessage(webhook_url, 'no race')
     # Save date of most recent race results
     with open("postedResults.txt", "w") as output:

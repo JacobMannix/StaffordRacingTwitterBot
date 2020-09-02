@@ -13,7 +13,7 @@ This script posts tweets to twitter in order to share the most recent racing res
 - webhook_url = "WEBHOOKURL" - The webhook URL if you want to send messages using webhooks.
 - twitterUser = 'TWITTERUSERNAME' - The twitter username of the account that is tweeting, used for creating twreads of tweets.
 
-### [TWEEPY](https://www.tweepy.org/) Twitter API Variables to change
+### [Tweepy](https://www.tweepy.org/) Twitter API Variables to change
 To create and use the twitter API apply for a [Twitter Developer Account](https://developer.twitter.com/).
 - ckey = "APIKEY" - Consumer Key
 - csecret = "APISECRETKEY" - Consumer Secret
@@ -23,5 +23,5 @@ To create and use the twitter API apply for a [Twitter Developer Account](https:
 ### Functions in Script
 - tweepyThread - Function using [tweepy](https://www.tweepy.org/) in order to send multiple tweets in a thread fashion.
 - discordMessage - Function using [requests](https://requests.readthedocs.io/en/master/) to send messages over webhooks, this one is used mainly for discord.
-- staffordResults - The main part of this script
+- [staffordResults](https://github.com/JacobMannix/StaffordResults) - The main part of this script
 

@@ -1,13 +1,12 @@
 # Stafford Motor Speedway Racing Results Twitter Bot
 This script posts tweets to twitter in order to share the most recent racing results from Stafford Motor Spedway's SK Modified Feature Events. The tweet includes the date of the race, the race title, the top 5 finishers and the link to the full article on the tracks website.
 
-##### [Stafford Motor Speedway](https://staffordmotorspeedway.com/)
-- 
-<img src="staffordwebsite.png" width="250">
-<img src="thekingtc13tweetexample.png" width="250">
-##### [@TheKingTC13](https://twitter.com/TheKingTC13)
+##### [Stafford Motor Speedway Website](https://staffordmotorspeedway.com/)
+##### [Twitter @TheKingTC13](https://twitter.com/TheKingTC13)
+<img src="staffordandtwitter.png" width="300">
 
-<!-- <img src="thekingtc13twitterheader.png" width="300"> -->
+
+
 
 
 

@@ -3,7 +3,7 @@ This script posts tweets to twitter in order to share the most recent racing res
 
 ##### [Stafford Motor Speedway Website](https://staffordmotorspeedway.com/)
 ##### [Twitter @TheKingTC13](https://twitter.com/TheKingTC13)
-<img src="staffordandtwitter.png" width="300">
+<img src="staffordandtwitter.jpeg" width="300">
 
 
 

@@ -3,32 +3,33 @@
 # Jacob Mannix [08-31-2020]
 
 # Check to see if working directory is the same as 'postedResults.txt'
-import os
-
-abspath = os.path.abspath(__file__)
-dname = os.path.dirname(abspath)
-os.chdir(dname)
+# To change the working directory on linux use the below code to the current path
+# import os
+# abspath = os.path.abspath(__file__)
+# dname = os.path.dirname(abspath)
+# os.chdir(dname)
 
 #Import dependencies
 import requests
 import bs4
-# from bs4 import BeautifulSoup
 import pandas as pd
 import math
 from datetime import datetime
 import re
 import tweepy
+import time
 
 #Variables
-archiveURL = "https://staffordmotorspeedway.com/category/results/sk-modified-results/"
-webhook_url = "https://discordapp.com/api/webhooks/750039834910785727/1xEBzZPWb90v6Rff4IZ8DN0U_4WdIE3eOVJlKFUZg0-X8I407lkqoNt1dbhHHBZYjIgq"
-twitterUser = 'thekingtc13'
+archiveURL = "ARTICLEURL"
+webhook_url = "WEBHOOKURL"
+twitterUser = 'TWITTERUSERNAME'
 
 # TweepyThread function to tweet multiple tweets in a thread
-ckey = "GBStFVszP6roFQZ1v5qVPeFzI"
-csecret = "exeVOmNZvItxHpkpH61hW8wqCJ2VvW7accQo9xZNtNEHKiBr9b"
-atoken = "1300816049386946562-4CgIiZgfomBgBQ8SMCbK1OKqv56YqH"
-asecret = "6C4kM545189HYZ4L2OO16S1wltf1CNdlAYhOP5p2QnABU"
+ckey = "APIKEY"
+csecret = "APISECRETKEY"
+atoken = "APIACCESSTOKEN"
+asecret = "APIACCESSTOKENSECRET"
+
 def tweepyThread(user, list):
     # Authenticate to Twitter
     auth = tweepy.OAuthHandler(ckey, csecret)
@@ -45,10 +46,12 @@ def tweepyThread(user, list):
             for status in statuses:
                 tweetid = status.id
             api.update_status(status = i, in_reply_to_status_id = tweetid , auto_populate_reply_metadata=True)
+            time.sleep(2) # optional sleep between each tweet
         else:
             api.update_status(status = i)
+            time.sleep(2) # optional sleep between each tweet
 
-# Discord Function to send 'message_content' from above
+# Discord Function to send 'message_content'
 def discordMessage(webhook_url, message_content):
     Message = {"content": message_content}
     requests.post(webhook_url, data=Message)
@@ -95,8 +98,9 @@ def staffordResults(archiveURL):
     dfDiscord = dfDiscord.replace('Driver', '');
     
     # Creates list for sectioning off drivers to limit 6 drivers per message
-    sections = [[0,5], [5,10], [10, 15], [15,20], [20,25], [25, 30], [30, 35]]
-    num_sections = math.ceil((len(df)/5))
+    # sections = [[0,5], [5,10], [10, 15], [15,20], [20,25], [25, 30], [30, 35]] # showing 5 drivers per tweet
+    sections = [[0,5]] # only showing top 5 drivers
+    num_sections = int(len(df) / 5) + (len(df)  % 5 > 0) # Divides the number of drivers by 5 (5 per tweet) and rounds up
     list_dfString = []
     for i,j in sections[:int(num_sections)]:
         dfString = repr(df[i:j])
@@ -106,15 +110,18 @@ def staffordResults(archiveURL):
         dfString = dfString.replace(') ', ')');
         dfString = dfString.replace(')', ') ');
         dfString = dfString.replace('Driver', '');
+        
+        # Originally made this to tweet all results in a thread of tweets but after testing works best for me...
+        # to tweet once with top 5 results along with link to rest of results
+        # Uncomment remaining of if statement and pass in a list to tweet in a thread
         if len(dfString) > 0:
             if i == 0:
-                list_dfString.append(title + "\n" + dfString)
-            else:
-                list_dfString.append(dfString)
+                list_dfString.append(title + "\n" + dfString + "\n" + " "  + "\n" + resultsHTML['href'])
+#             elif i <= 5:
+#                 list_dfString.append(dfString)
+            #else:
+                #list_dfString.append(dfString + "\n" + resultsHTML['href'])
     
-    # Add URL for race results to end of list
-    list_dfString.append(resultsHTML['href'])
-
     # Open date of most recently posted race
     postedResults = []
     with open('postedResults.txt', 'r') as fh:
@@ -134,15 +141,15 @@ def staffordResults(archiveURL):
         print(list_dfString)
 
         # Send race results in tweet thread
-        tweepyThread(twitterUser, list_dfString)
+        tweepyThread(twitterUser, list_dfString) # Calling function from above to tweet, takes a list
 
-        # Send race results to discord
+        # Send race results to discord -- Optional if you want to send results through webhook
         message_content = title + "\n" + dfDiscord
         discordMessage(webhook_url, message_content)
 
     else:
-        print('no race')
-        # discordMessage(webhook_url, 'no race')
+        print('no new race results')
+        # discordMessage(webhook_url, 'no new race results') 
     # Save date of most recent race results
     with open("postedResults.txt", "w") as output:
         output.write(str(postedResults))

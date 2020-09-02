@@ -8,7 +8,7 @@ his script allows the user to recieve up to date notifications directly from twi
 <!-- <img src="thekingtc13twitterheader.png" width="300"> -->
 <img src="thekingtc13tweetexample.png" width="300">
 
-
+![tweetexample](thekingtc13tweetexample.png)
 
 
 ---

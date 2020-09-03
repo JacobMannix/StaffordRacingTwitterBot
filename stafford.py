@@ -1,5 +1,4 @@
 #!/usr/bin/python
-
 # Jacob Mannix [08-31-2020]
 
 #Import dependencies

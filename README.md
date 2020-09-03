@@ -4,7 +4,7 @@ This script posts tweets to twitter in order to share the most recent racing res
 ---
 
 ##### [Stafford Motor Speedway Website](https://staffordmotorspeedway.com/) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [Twitter @TheKingTC13](https://twitter.com/TheKingTC13)
-![StaffordandTwitter](staffordandtwitter.jpeg)
+![StaffordandTwitter](images/staffordandtwitter.jpeg)
 
 ---
 
@@ -25,3 +25,5 @@ To create and use the twitter API apply for a [Twitter Developer Account](https:
 - discordMessage - Function using [requests](https://requests.readthedocs.io/en/master/) to send messages over webhooks, this one is used mainly for discord.
 - [staffordResults](https://github.com/JacobMannix/StaffordResults) - The main part of this script
 
+#### License
+Licensed under the [MIT License](LICENSE)

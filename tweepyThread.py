@@ -1,3 +1,6 @@
+#!/usr/bin/python
+# Jacob Mannix [08-31-2020]
+
 # TweepyThread function to tweet multiple tweets in a thread
 
 # Import Dependencies

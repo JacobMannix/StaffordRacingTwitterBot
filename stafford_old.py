@@ -13,11 +13,7 @@ import tweepy
 import time
 import os
 
-# Local Modules
-from webhooks import webhookMessage
-from tweepyThread import tweepyThread
-
-# Environment Variables - uses .env file
+# Environment Variables - use .env files
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -30,13 +26,40 @@ load_dotenv()
 #Variables
 archiveURL = "https://staffordmotorspeedway.com/category/results/sk-modified-results/"
 
-# Environment Variables - change in '.env' file
+# Environment Variables - '.env'
 webhook_url = os.getenv("DISCORD_WEBHOOK")
 twitterUser = os.getenv("TWITTER_ACCOUNT")
 ckey = os.getenv("API_KEY")
 csecret = os.getenv("API_SECRET")
 atoken = os.getenv("API_ACCESS_TOKEN")
 asecret = os.getenv("API_ACCESS_SECRET")
+
+# TweepyThread function to tweet multiple tweets in a thread
+def tweepyThread(user, list):
+    # Authenticate to Twitter
+    auth = tweepy.OAuthHandler(ckey, csecret)
+    auth.set_access_token(atoken, asecret)
+
+    # Create API object
+    api = tweepy.API(auth)
+    
+    count = 0
+    for i in list:
+        statuses = api.user_timeline(user, count = 1) 
+        count += 1
+        if count > 1:
+            for status in statuses:
+                tweetid = status.id
+            api.update_status(status = i, in_reply_to_status_id = tweetid , auto_populate_reply_metadata=True)
+            # time.sleep(2) # optional sleep between each tweet
+        else:
+            api.update_status(status = i)
+            # time.sleep(2) # optional sleep between each tweet
+
+# Discord Function to send 'message_content'
+def discordMessage(webhook_url, message_content):
+    Message = {"content": message_content}
+    requests.post(webhook_url, data=Message)
 
 # Race Results function
 def staffordResults(archiveURL):
@@ -123,15 +146,15 @@ def staffordResults(archiveURL):
         print(list_dfString)
 
         # Send race results in tweet thread
-        # tweepyThread(twitterUser, list_dfString, ckey, csecret, atoken, asecret) # Calling function from above to tweet, takes a list
+        # tweepyThread(twitterUser, list_dfString) # Calling function from above to tweet, takes a list
 
         # Send race results to discord -- Optional if you want to send results through webhook
         message_content = title + "\n" + dfDiscord
-        webhookMessage(webhook_url, message_content)
+        discordMessage(webhook_url, message_content)
 
     else:
         print('no new race results')
-        webhookMessage(webhook_url, 'no new race results') 
+        # discordMessage(webhook_url, 'no new race results') 
     # Save date of most recent race results
     with open("postedResults.txt", "w") as output:
         output.write(str(postedResults))

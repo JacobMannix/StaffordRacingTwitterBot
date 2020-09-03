@@ -1,3 +1,6 @@
+#!/usr/bin/python
+# Jacob Mannix [08-31-2020]
+
 # Webhook Function
 
 # Import Dependencies

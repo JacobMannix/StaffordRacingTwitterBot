@@ -16,7 +16,7 @@ import os
 from webhooks import webhookMessage
 from tweepyThread import tweepyThread
 
-# Environment Variables - uses .env file
+# Load Environment Variables - uses .env file
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -26,9 +26,6 @@ load_dotenv()
 # dname = os.path.dirname(abspath)
 # os.chdir(dname)
 
-#Variables
-
-
 # Environment Variables - change in '.env' file
 ckey = os.getenv("API_KEY")
 csecret = os.getenv("API_SECRET")
@@ -36,8 +33,7 @@ atoken = os.getenv("API_ACCESS_TOKEN")
 asecret = os.getenv("API_ACCESS_SECRET")
 twitterUser = os.getenv("TWITTER_ACCOUNT")
 webhook_url = os.getenv("WEBHOOK_URL")
-archiveURL = os.getenv("ARCHIVE_URL") # https://staffordmotorspeedway.com/category/results/sk-modified-results/"
-
+archiveURL = os.getenv("ARCHIVE_URL")
 
 # Race Results function
 def staffordResults(archiveURL):

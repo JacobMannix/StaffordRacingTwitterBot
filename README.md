@@ -9,10 +9,14 @@ This script posts tweets to twitter in order to share the most recent racing res
 ---
 
 ## Environment Variables
-See the docs: [python-dotenv](https://github.com/theskumar/python-dotenv)
-Change variables in '.env'
+See the docs: [python-dotenv](https://github.com/theskumar/python-dotenv).
 
-Twitter API Variables [Tweepy](https://www.tweepy.org/) 
+Change the below variables in '.env'. Using environment variables to secure api keys.
+
+Twitter API Variables 
+API calls using [Tweepy](https://www.tweepy.org/).
+To create and use the twitter API apply for a [Twitter Developer Account](https://developer.twitter.com/).
+
 - API_KEY = "YOUR_KEY_HERE"
 - API_SECRET = "YOUR_KEY_HERE"
 - API_ACCESS_TOKEN = "YOUR_KEY_HERE"
@@ -27,16 +31,8 @@ Webhook Variable
 Other Variable
 - ARCHIVE_URL = "ARTICLE_URL" - The URL that contains a list of posts.
 
-
-##  to change
-To create and use the twitter API apply for a [Twitter Developer Account](https://developer.twitter.com/).
-- ckey = "APIKEY" - Consumer Key
-- csecret = "APISECRETKEY" - Consumer Secret
-- atoken = "APIACCESSTOKEN" - Access Token
-- asecret = "APIACCESSTOKENSECRET" - Access Token Secret
-
 ## Functions in Script
-- tweepyThread - Function using [tweepy](https://www.tweepy.org/) in order to send multiple tweets in a thread fashion.
+- [tweepyThread](https://github.com/JacobMannix/TweepyThread) - Function using [tweepy](https://www.tweepy.org/) in order to send multiple tweets in a thread fashion.
 - discordMessage - Function using [requests](https://requests.readthedocs.io/en/master/) to send messages over webhooks, this one is used mainly for discord.
 - [staffordResults](https://github.com/JacobMannix/StaffordResults) - The main part of this script
 

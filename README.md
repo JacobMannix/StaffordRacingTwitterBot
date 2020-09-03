@@ -24,7 +24,7 @@ To create and use the twitter API apply for a [Twitter Developer Account](https:
 - API_ACCESS_SECRET = "YOUR_KEY_HERE"
 
 #### Twitter Account Variable
-- TWITTER_ACCOUNT = "YOUR_@TWITTER_HERE"
+- TWITTER_ACCOUNT = "YOUR_@TWITTER_HERE" - The twitter account username used in the API.
 
 #### Webhook Variable
 - WEBHOOK_URL = "WEBHOOK_URL" - The webhook URL if you want to send messages using webhooks.
@@ -39,5 +39,4 @@ To create and use the twitter API apply for a [Twitter Developer Account](https:
 
 ---
 
-### License
 Licensed under the [MIT License](LICENSE).

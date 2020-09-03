@@ -8,12 +8,27 @@ This script posts tweets to twitter in order to share the most recent racing res
 
 ---
 
-## Variables for functions to change
-- archiveURL = "ARTICLEURL" - The URL that contains a list of posts.
-- webhook_url = "WEBHOOKURL" - The webhook URL if you want to send messages using webhooks.
-- twitterUser = 'TWITTERUSERNAME' - The twitter username of the account that is tweeting, used for creating twreads of tweets.
+## Environment Variables
+See the docs: [python-dotenv](https://github.com/theskumar/python-dotenv)
+Change variables in '.env'
 
-## [Tweepy](https://www.tweepy.org/) Twitter API Variables to change
+Twitter API Variables [Tweepy](https://www.tweepy.org/) 
+- API_KEY = "YOUR_KEY_HERE"
+- API_SECRET = "YOUR_KEY_HERE"
+- API_ACCESS_TOKEN = "YOUR_KEY_HERE"
+- API_ACCESS_SECRET = "YOUR_KEY_HERE"
+
+Twitter Account Variable
+- TWITTER_ACCOUNT = "YOUR_@TWITTER_HERE"
+
+Webhook Variable
+- WEBHOOK_URL = "WEBHOOK_URL" - The webhook URL if you want to send messages using webhooks.
+
+Other Variable
+- ARCHIVE_URL = "ARTICLE_URL" - The URL that contains a list of posts.
+
+
+##  to change
 To create and use the twitter API apply for a [Twitter Developer Account](https://developer.twitter.com/).
 - ckey = "APIKEY" - Consumer Key
 - csecret = "APISECRETKEY" - Consumer Secret

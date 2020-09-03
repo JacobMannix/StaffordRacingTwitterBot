@@ -27,15 +27,17 @@ load_dotenv()
 # os.chdir(dname)
 
 #Variables
-archiveURL = "https://staffordmotorspeedway.com/category/results/sk-modified-results/"
+
 
 # Environment Variables - change in '.env' file
-webhook_url = os.getenv("DISCORD_WEBHOOK")
-twitterUser = os.getenv("TWITTER_ACCOUNT")
 ckey = os.getenv("API_KEY")
 csecret = os.getenv("API_SECRET")
 atoken = os.getenv("API_ACCESS_TOKEN")
 asecret = os.getenv("API_ACCESS_SECRET")
+twitterUser = os.getenv("TWITTER_ACCOUNT")
+webhook_url = os.getenv("WEBHOOK_URL")
+archiveURL = os.getenv("ARCHIVE_URL") # https://staffordmotorspeedway.com/category/results/sk-modified-results/"
+
 
 # Race Results function
 def staffordResults(archiveURL):

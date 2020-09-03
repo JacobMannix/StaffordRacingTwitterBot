@@ -13,8 +13,9 @@ See the docs: [python-dotenv](https://github.com/theskumar/python-dotenv).
 
 Change the below variables in '.env'. Using environment variables to secure api keys.
 
-Twitter API Variables 
+#### Twitter API Variables 
 API calls using [Tweepy](https://www.tweepy.org/).
+
 To create and use the twitter API apply for a [Twitter Developer Account](https://developer.twitter.com/).
 
 - API_KEY = "YOUR_KEY_HERE"
@@ -22,13 +23,13 @@ To create and use the twitter API apply for a [Twitter Developer Account](https:
 - API_ACCESS_TOKEN = "YOUR_KEY_HERE"
 - API_ACCESS_SECRET = "YOUR_KEY_HERE"
 
-Twitter Account Variable
+#### Twitter Account Variable
 - TWITTER_ACCOUNT = "YOUR_@TWITTER_HERE"
 
-Webhook Variable
+#### Webhook Variable
 - WEBHOOK_URL = "WEBHOOK_URL" - The webhook URL if you want to send messages using webhooks.
 
-Other Variable
+#### Other Variable
 - ARCHIVE_URL = "ARTICLE_URL" - The URL that contains a list of posts.
 
 ## Functions in Script

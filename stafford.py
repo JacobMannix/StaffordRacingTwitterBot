@@ -48,7 +48,7 @@ def staffordResults(archiveURL):
     # Use most recent race URL to see results of race
     resultsPage = requests.get(resultsURL)
     resultsSoup = bs4.BeautifulSoup(resultsPage.text, "html.parser")
-    resultsData = resultsSoup.find(class_= "row-hover") #TODO change this variable name
+    resultsData = resultsSoup.find(class_= "row-hover")
 
     # Appending Race Results to Lists
     A=[]
@@ -112,8 +112,9 @@ def staffordResults(archiveURL):
     
     # Using Regex to extract the race date from the 'resultsHTML' webpage
     date = re.search(r"\b(?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:tember)?|Oct(?:ober)?|(Nov|Dec)(?:ember)?)\D?(\d{1,2}\D?)?\D?((19[7-9]\d|20\d{2})|\d{2})", resultsHTML.string)
-    raceDate = date.group(0)#[0]
-    
+    # raceDate = date.group(0)
+    raceDate = datetime.strptime(date.group(0), "%B %d, %Y").strftime("%B %d, %Y") #[0]
+
     # Checks if raceDate
     if raceDate != postedResults:
         postedResults = raceDate
@@ -128,7 +129,7 @@ def staffordResults(archiveURL):
 
     else:
         print('no new race results')
-        webhookMessage(webhook_url, 'no new race results') 
+        # webhookMessage(webhook_url, 'no new race results') 
     # Save date of most recent race results
     with open("postedResults.txt", "w") as output:
         output.write(str(postedResults))

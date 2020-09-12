@@ -33,12 +33,23 @@ atoken = os.getenv("API_ACCESS_TOKEN")
 asecret = os.getenv("API_ACCESS_SECRET")
 twitterUser = os.getenv("TWITTER_ACCOUNT")
 webhook_url = os.getenv("WEBHOOK_URL")
-# archiveURL = os.getenv("ARCHIVE_URL")
-archiveURL = "https://staffordmotorspeedway.com/category/results/sk-modified-results/"
+archiveURL = os.getenv("ARCHIVE_URL")
 
 # Race Results function
 def staffordResults(archiveURL):
     # Getting Page of all Race Results
+    
+    print(archiveURL)
+    # print(archivePage)
+    # archiveURL = archiveURL[0].get('src').strip("https://")
+    # archiveURL="https://"+archiveURL
+    if 'staffordmotorspeedway' not in archiveURL:
+        archiveURL=archiveURL[:7]+'staffordmotorspeedway.com/'+archiveURL[7:]
+    print(archiveURL)
+
+    print("comic url",archiveURL)
+
+
     archivePage = requests.get(archiveURL)
     archiveSoup = bs4.BeautifulSoup(archivePage.text, "html.parser")
     resultsHTML = archiveSoup.find(itemprop="url")
@@ -102,36 +113,38 @@ def staffordResults(archiveURL):
             # else:
                 # list_dfString.append(dfString + "\n" + resultsHTML['href'])
     
-    # Open title of most recently posted race
-    postTitle = []
-
-    with open('postTitle.txt', 'r') as file:
-        for line in file:
-            postTitle.append(str(line))
-    postTitle = postTitle[0] # this may throw an error if nothing is in 'postTitle.txt'
+    # Open date of most recently posted race
+    postedResults = []
+    with open('postedResults.txt', 'r') as fh:
+        for line in fh:
+            postedResults.append(str(line))
+            
+    # Convert date in list to datetime and format it
+    postedResults = datetime.strptime(postedResults[0], "%B %d, %Y").strftime("%B %d, %Y")
     
     # Using Regex to extract the race date from the 'resultsHTML' webpage
-    # date = re.search(r"\b(?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:tember)?|Oct(?:ober)?|(Nov|Dec)(?:ember)?)\D?(\d{1,2}\D?)?\D?((19[7-9]\d|20\d{2})|\d{2})", resultsHTML.string)
-    # raceDate = datetime.strptime(date.group(0), "%B %d, %Y").strftime("%B %d, %Y") #[0]
+    date = re.search(r"\b(?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:tember)?|Oct(?:ober)?|(Nov|Dec)(?:ember)?)\D?(\d{1,2}\D?)?\D?((19[7-9]\d|20\d{2})|\d{2})", resultsHTML.string)
+    # raceDate = date.group(0)
+    raceDate = datetime.strptime(date.group(0), "%B %d, %Y").strftime("%B %d, %Y") #[0]
 
     # Checks if raceDate
-    if title != postTitle:
+    if raceDate != postedResults:
+        postedResults = raceDate
         print(list_dfString)
 
         # Send race results in tweet thread
         # tweepyThread(twitterUser, list_dfString, ckey, csecret, atoken, asecret) # Calling function from above to tweet, takes a list
 
         # Send race results to discord -- Optional if you want to send results through webhook
-        # message_content = title + "\n" + dfDiscord
-        # webhookMessage(webhook_url, message_content)
+        message_content = title + "\n" + dfDiscord
+        webhookMessage(webhook_url, message_content)
 
     else:
         print('no new race results')
         # webhookMessage(webhook_url, 'no new race results') 
-    
-    # Save title to file
-    with open("postTitle.txt", "w") as output:
-        output.write(str(title.rstrip()))
+    # Save date of most recent race results
+    with open("postedResults.txt", "w") as output:
+        output.write(str(postedResults))
     
 # Calling Function
 staffordResults(archiveURL)

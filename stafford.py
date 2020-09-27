@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/home/mannix/anaconda3/bin/python
 # Jacob Mannix [08-31-2020]
 
 #Import dependencies
@@ -16,15 +16,17 @@ import os
 from webhooks import webhookMessage
 from tweepyThread import tweepyThread
 
+# Working Directory
+abspath = os.path.abspath(__file__) # absolute path of file
+dname = os.path.dirname(abspath) # directory name
+# os.chdir(dname) # change directory
+
+# Set directory of .env file
+envpath = dname + "/.env"
+
 # Load Environment Variables - uses .env file
 from dotenv import load_dotenv
-load_dotenv()
-
-# Check to see if working directory is the same as 'postedResults.txt'
-# To change the working directory on linux use the below code to the current path
-# abspath = os.path.abspath(__file__)
-# dname = os.path.dirname(abspath)
-# os.chdir(dname)
+load_dotenv(dotenv_path = envpath)
 
 # Environment Variables - change in '.env' file
 ckey = os.getenv("API_KEY")
@@ -33,8 +35,8 @@ atoken = os.getenv("API_ACCESS_TOKEN")
 asecret = os.getenv("API_ACCESS_SECRET")
 twitterUser = os.getenv("TWITTER_ACCOUNT")
 webhook_url = os.getenv("WEBHOOK_URL")
-# archiveURL = os.getenv("ARCHIVE_URL")
-archiveURL = "https://staffordmotorspeedway.com/category/results/sk-modified-results/"
+archiveURL = os.getenv("ARCHIVE_URL")
+# archiveURL = "https://staffordmotorspeedway.com/category/results/sk-modified-results/"
 
 # Race Results function
 def staffordResults(archiveURL):
@@ -119,16 +121,16 @@ def staffordResults(archiveURL):
         print(list_dfString)
 
         # Send race results in tweet thread
-        # tweepyThread(twitterUser, list_dfString, ckey, csecret, atoken, asecret) # Calling function from above to tweet, takes a list
+        tweepyThread(twitterUser, list_dfString, ckey, csecret, atoken, asecret) # Calling function from above to tweet, takes a list
 
         # Send race results to discord -- Optional if you want to send results through webhook
-        # message_content = title + "\n" + dfDiscord
-        # webhookMessage(webhook_url, message_content)
+        message_content = title + "\n" + dfDiscord
+        webhookMessage(webhook_url, message_content)
 
     else:
         print('no new race results')
-        # webhookMessage(webhook_url, 'no new race results') 
-    
+        webhookMessage(webhook_url, 'no new race results')
+
     # Save title to file
     with open("postTitle.txt", "w") as output:
         output.write(str(title.rstrip()))

@@ -1,5 +1,5 @@
-#!/usr/bin/python
-# Jacob Mannix [08-31-2020]
+#!/home/mannix/anaconda3/bin/python
+# # Jacob Mannix [08-31-2020]
 
 # Webhook Function
 

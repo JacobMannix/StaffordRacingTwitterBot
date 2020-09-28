@@ -22,7 +22,7 @@ dname = os.path.dirname(abspath) # directory name
 # os.chdir(dname) # change directory
 
 # Set directory of .env file
-envpath = dname + "/.env"
+envpath = dname + "/env.env"
 
 # Load Environment Variables - uses .env file
 from dotenv import load_dotenv

@@ -36,7 +36,6 @@ asecret = os.getenv("API_ACCESS_SECRET")
 twitterUser = os.getenv("TWITTER_ACCOUNT")
 webhook_url = os.getenv("WEBHOOK_URL")
 archiveURL = os.getenv("ARCHIVE_URL")
-# archiveURL = "https://staffordmotorspeedway.com/category/results/sk-modified-results/"
 
 # Race Results function
 def staffordResults(archiveURL):
@@ -129,7 +128,7 @@ def staffordResults(archiveURL):
 
     else:
         print('no new race results')
-        webhookMessage(webhook_url, 'no new race results')
+        # webhookMessage(webhook_url, 'no new race results')
 
     # Save title to file
     with open("postTitle.txt", "w") as output:

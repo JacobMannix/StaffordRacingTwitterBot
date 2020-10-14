@@ -3,7 +3,7 @@
 [![GitHub top language](https://img.shields.io/github/languages/top/jacobmannix/stafford-racing-twitter-bot)](https://github.com/JacobMannix/kubernetes-stafford)
 [![GitHub last commit](https://img.shields.io/github/last-commit/jacobmannix/stafford-racing-twitter-bot)](https://github.com/JacobMannix/kubernetes-stafford/commits/master)
 
-> <b> This script posts tweets to twitter in order to share the most recent racing results from Stafford Motor Spedway's SK Modified Feature Events. The tweet includes the date of the race, the race title, the top 5 finishers and the link to the full article on the tracks website. </b>
+> <b> This script posts tweets to twitter in order to share the most recent racing results from Stafford Motor Speedway's SK Modified Feature Events. The tweet includes the date of the race, the race title, the top 5 finishers and the link to the full article on the tracks website. </b>
 
 #
 ##### [Stafford Motor Speedway Website](https://staffordmotorspeedway.com/) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [Twitter @TheKingTC13](https://twitter.com/TheKingTC13)

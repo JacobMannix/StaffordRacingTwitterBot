@@ -1,5 +1,5 @@
 # Stafford Motor Speedway Racing Results Twitter Bot
-[![GitHub](https://img.shields.io/github/license/jacobmannix/kubernetes-stafford?color=blue)](LICENSE)
+[![GitHub](https://img.shields.io/github/license/jacobmannix/stafford-racing-twitter-bot?color=blue)](LICENSE)
 [![GitHub top language](https://img.shields.io/github/languages/top/jacobmannix/stafford-racing-twitter-bot)](https://github.com/JacobMannix/kubernetes-stafford)
 [![GitHub last commit](https://img.shields.io/github/last-commit/jacobmannix/stafford-racing-twitter-bot)](https://github.com/JacobMannix/kubernetes-stafford/commits/master)
 

@@ -9,17 +9,13 @@
 ##### [Stafford Motor Speedway Website](https://staffordmotorspeedway.com/) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [Twitter @TheKingTC13](https://twitter.com/TheKingTC13)
 ![StaffordandTwitter](images/staffordandtwitter.jpeg)
 
-#
 ## Environment Variables
-See the docs: [python-dotenv](https://github.com/theskumar/python-dotenv).
-
-Change the below variables in '.env'. Using environment variables to secure api keys.
+- See the docs: [python-dotenv](https://github.com/theskumar/python-dotenv).
+- Change the below variables in '.env'. Using environment variables to secure api keys.
 
 #### Twitter API Variables 
-API calls using [Tweepy](https://www.tweepy.org/).
-
-To create and use the twitter API apply for a [Twitter Developer Account](https://developer.twitter.com/).
-
+- API calls using [Tweepy](https://www.tweepy.org/).
+- To create and use the twitter API apply for a [Twitter Developer Account](https://developer.twitter.com/).
 ```yaml
 API_ACCESS_SECRET: <API_ACCESS_SECRET_base64_encoded>
 API_ACCESS_TOKEN: <API_ACCESS_TOKEN_base64_encoded>

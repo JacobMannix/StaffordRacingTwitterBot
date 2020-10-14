@@ -20,7 +20,7 @@ API calls using [Tweepy](https://www.tweepy.org/).
 
 To create and use the twitter API apply for a [Twitter Developer Account](https://developer.twitter.com/).
 
-```python
+```yaml
 API_ACCESS_SECRET: <API_ACCESS_SECRET_base64_encoded>
 API_ACCESS_TOKEN: <API_ACCESS_TOKEN_base64_encoded>
 API_KEY: <API_KEY_base64_encoded>
@@ -29,17 +29,17 @@ API_SECRET: <API_SECRET_base64_encoded>
 
 #### Twitter Account Variable
 The twitter account username used in the API.
-```python
+```yaml
 TWITTER_ACCOUNT: <TWITTER_ACCOUNT_base64_encoded>
 ```
 #### Webhook Variable
 The webhook URL if you want to send messages using webhooks.
-```python
+```yaml
 WEBHOOK_DISCORD: <WEBHOOK_DISCORD_base64_encoded>
 ```
 #### Other Variable
 The URL that contains a list of posts.
-```python
+```yaml
 ARCHIVE_WEBSITE: <ARCHIVE_WEBSITE_base64_encoded>
 ```
 ## Functions in Script
